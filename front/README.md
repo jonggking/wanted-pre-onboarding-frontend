@@ -1,46 +1,155 @@
-# Getting Started with Create React App
+## 실행방법
+```
+$ cd front
+$ yarn
+$ yarn start
+```
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```
+$ cd back
+$ npm install
+$ npm start
+```
 
-## Available Scripts
+## 과제
 
-In the project directory, you can run:
+- 과제 수행 과정에서 지원자분들의 자율성과 창의력을 발휘하는 것을 기대하고 존중합니다. 다만, 아래 과제 안내에 적힌 가이드라인들은 모두 정확히 준수해주시기를 바랍니다.
+- 가이드라인에 명시된 사항 외에는 자유롭게 진행해주셔도 됩니다.
 
-### `yarn start`
+### :: 1. 로그인 / 회원가입
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- `/signup` 경로에 회원가입 기능을 개발해주세요
+- `/signin` 경로에 로그인 기능을 개발해주세요
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  - 페이지 안에 이메일 input, 비밀번호 input, 제출 button이 포함된 형태로 구성해주세요
 
-### `yarn test`
+    - [✅] 이메일 input에 `data-testid="email-input"` 속성을 부여해주세요
+    - [✅]패스워드 input에 `data-testid="password-input"` 속성을 부여해주세요
+    - [✅]회원가입 button에 `data-testid="signup-button"` 속성을 부여해주세요
+    - 로그인 button에 `data-testid="signin-button"` 속성을 부여해주세요
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    ```html
+    <!-- 예시 -->
+    <input data-testid="email-input" />
+    <input data-testid="password-input" />
+    <button data-testid="signup-button">회원가입</button>
+    ```
 
-### `yarn build`
+- 두 페이지의 UI는 동일해도 무방합니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Assignment 1
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 회원가입과 로그인 페이지에 이메일과 비밀번호의 유효성 검사기능을 구현해주세요
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  - [✅]이메일 조건: `@` 포함
+  - [✅]비밀번호 조건: 8자 이상
+  - [✅]이메일과 비밀번호의 유효성 검사 조건은 별도의 추가 조건 부여 없이 위의 조건대로만 진행해주세요 (e.g. 비밀번호 유효성 검사에 특수문자 포함 등의 새로운 조건을 추가하는 행위를 지양해주세요)
 
-### `yarn eject`
+- [✅]입력된 이메일과 비밀번호가 유효성 검사를 통과하지 못한다면 button에 `disabled` 속성을 부여해주세요
+- [✅]보안 상 실제 사용하고 계신 이메일과 패스워드말고 테스트용 이메일, 패스워드 사용을 권장드립니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Assignment 2
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [✅]회원가입 페이지에서 버튼을 클릭 시 회원가입을 진행하고 회원가입이 정상적으로 완료되었을 시 `/signin` 경로로 이동해주세요
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Assignment 3
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- 로그인 페이지에서 버튼을 클릭 시, 로그인을 진행하고 로그인이 정상적으로 완료되었을 시 `/todo` 경로로 이동해주세요
 
-## Learn More
+  - 로그인 API는 로그인이 성공했을 시 Response Body에 JWT를 포함해서 응답합니다.
+  - 응답받은 JWT는 로컬 스토리지에 저장해주세요
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Assignment 4
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- 로그인 여부에 따른 리다이렉트 처리를 구현해주세요
+
+  - 로컬 스토리지에 토큰이 있는 상태로 `/signin` 또는 `/signup` 페이지에 접속한다면 `/todo` 경로로 리다이렉트 시켜주세요
+  - 로컬 스토리지에 토큰이 없는 상태로 `/todo`페이지에 접속한다면 `/signin` 경로로 리다이렉트 시켜주세요
+
+---
+
+### :: 2. TODO LIST
+
+#### Assignment 5
+
+- `/todo`경로에 접속하면 투두 리스트의 목록을 볼 수 있도록 해주세요
+- 목록에서는 TODO의 내용과 완료 여부가 표시되어야 합니다.
+- TODO의 완료 여부는 `<input type="checkbox" />`를 통해 표현해주세요
+- TODO는 `<li>` tag를 이용해 감싸주세요
+
+```html
+<li>
+  <label>
+    <input type="checkbox" />
+    <span>TODO 1</span>
+  </label>
+</li>
+<li>
+  <label>
+    <input type="checkbox" />
+    <span>TODO 2</span>
+  </label>
+</li>
+```
+
+#### Assignment 6
+
+- 리스트 페이지에 새로운 TODO를 입력할 수 있는 input과 추가 button을 만들어주세요
+
+  - TODO 입력 input에는 `data-testid="new-todo-input"` 속성을 부여해주세요
+  - TODO 추가 button에는 `data-testid="new-todo-add-button"` 속성을 부여해주세요
+
+    ```html
+    <input data-testid="new-todo-input" />
+    <button data-testid="new-todo-add-button">추가</button>
+    ```
+
+- 추가 button을 클릭하면 입력 input의 내용이 새로운 TODO로 추가되도록 해주세요
+
+#### Assignment 7
+
+- TODO의 체크박스를 통해 완료 여부를 수정할 수 있도록 해주세요.
+
+#### Assignment 8
+
+- TODO 우측에 수정버튼과 삭제 버튼을 만들어주세요
+
+  - 수정 버튼에는 `data-testid="modify-button"` 속성을 부여해주세요
+  - 삭제 버튼에는 `data-testid="delete-button"` 속성을 부여해주세요
+
+    ```html
+    <li>
+      <label>
+        <input type="checkbox" />
+        <span>TODO 1</span>
+      </label>
+      <button data-testid="modify-button">수정</button>
+      <button data-testid="delete-button">삭제</button>
+    </li>
+    ```
+
+#### Assignment 9
+
+- 투두 리스트의 삭제 기능을 구현해주세요
+
+  - 투두 리스트의 TODO 우측의 삭제버튼을 누르면 해당 아이템이 삭제되도록 해주세요
+
+#### Assignment 10
+
+- 투두 리스트의 수정 기능을 구현해주세요
+
+  - TODO 우측의 수정 버튼을 누르면 수정모드가 활성화 되도록 해주세요
+  - 수정모드에서는 TODO의 내용을 변경할 수 있어야 합니다.
+  - 수정모드에서는 TODO의 내용이 input창 안에 입력된 형태로 변경해주세요
+    - 수정 input창에는 `data-testid="modify-input"` 속성을 부여해주세요
+  - 수정모드에서는 TODO의 우측에 제출버튼과 취소버튼이 표시되게 해주세요
+    - 제출버튼에는 `data-testid="submit-button"` 속성을 부여해주세요
+    - 취소버튼에는 `data-testid="cancel-button"` 속성을 부여해주세요
+  - 제출버튼을 누르면 수정한 내용을 제출해서 내용이 업데이트 될 수 있도록 해주세요
+  - 취소버튼을 누르면 수정한 내용을 초기화 하고, 수정모드를 비활성화 해주세요
+
+    ```html
+    <input data-testid="modify-input" />
+    <button data-testid="submit-button">제출</button>
+    <button data-testid="cancel-button">취소</button>
+    ```
