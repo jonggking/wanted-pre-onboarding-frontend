@@ -1,10 +1,19 @@
-import React from 'react';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+// import Todo from "./pages/Todo";
 
 function App() {
   return (
-    <div className="App">
-      ghfg
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/singin" element={<Login />} />
+          {/* <Route path="/" element={<Todo />} /> */}
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
