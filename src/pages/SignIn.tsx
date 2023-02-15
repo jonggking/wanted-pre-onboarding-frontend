@@ -18,8 +18,13 @@ import { validateEmail, validatePassword } from "../components/validate";
 
 const theme = createTheme();
 
+interface SignIn {
+  email: string;
+  password: string;
+}
+
 export default function SignIn() {
-  const [signInData, setSignInData] = useState({ email: "", password: "" });
+  const [signInData, setSignInData] = useState<SignIn>({ email: "", password: "" });
   const navigate = useNavigate();
   const isValidEmail = validateEmail(signInData.email);
   const isValidPassword = validatePassword(signInData.password);

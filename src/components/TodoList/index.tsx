@@ -16,7 +16,7 @@ export type Props = Todo & {
 
 export default function TodoList() {
   const [todoList, setTodoList] = useState<Todo[]>([]);
-  const [todo, setTodo] = useState<String>("");
+  const [todo, setTodo] = useState<string>("");
   const todoInput = useRef<HTMLInputElement>(null);
   const getTodoList = async () => {
     try {
@@ -63,6 +63,7 @@ export default function TodoList() {
           type="text"
           ref={todoInput}
           placeholder="할일을 입력해주세요."
+          value={todo}
           v-model="tasks.name"
           className="task-input"
           onChange={(e) => setTodo(e.target.value)}
