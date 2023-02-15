@@ -7,6 +7,7 @@ $ yarn start
 ## 과제
 
 ### :: 1. 로그인 / 회원가입
+![ezgif com-optimize](https://user-images.githubusercontent.com/108375964/219053134-cecfaec7-6776-4f6e-a31b-b2d4ca05d971.gif)
 
 - `/signup` 경로에 회원가입 기능을 개발해주세요
 - `/signin` 경로에 로그인 기능을 개발해주세요
@@ -49,6 +50,8 @@ $ yarn start
 
 
 ### :: 2. TODO LIST
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/108375964/219053945-c3545ce8-7fc9-4d1e-b150-7d59cecdac53.gif)
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/108375964/219055128-46287d6b-e933-4b07-8598-de5c629eca4e.gif)
 
 #### Assignment 5
 
