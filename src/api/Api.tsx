@@ -1,8 +1,6 @@
 import axios, { AxiosError } from "axios";
 
-const backendPortNumber = "8000";
-
-const serverUrl = "http://localhost:" + backendPortNumber + "/";
+const serverUrl = "https://pre-onboarding-selection-task.shop/";
 
 async function get(endpoint: string, params?: string) {
   console.log(`GET 요청 ${serverUrl + endpoint}`);

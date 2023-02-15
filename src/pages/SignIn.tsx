@@ -2,8 +2,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -24,7 +22,10 @@ interface SignIn {
 }
 
 export default function SignIn() {
-  const [signInData, setSignInData] = useState<SignIn>({ email: "", password: "" });
+  const [signInData, setSignInData] = useState<SignIn>({
+    email: "",
+    password: "",
+  });
   const navigate = useNavigate();
   const isValidEmail = validateEmail(signInData.email);
   const isValidPassword = validatePassword(signInData.password);
@@ -47,7 +48,6 @@ export default function SignIn() {
       if (res.status === 200) {
         const token = res.data.access_token;
         localStorage.setItem("access_token", token);
-        alert("성공적으로 로그인되었습니다.");
         navigate("/todo");
       }
     } catch (err) {
@@ -111,11 +111,8 @@ export default function SignIn() {
                 }))
               }
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
+              data-testid="signin-button"
               type="submit"
               fullWidth
               variant="contained"
@@ -123,15 +120,11 @@ export default function SignIn() {
             >
               로그인
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
+
+            <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                <Link href="./signup" variant="body2">
+                  회원가입하러가기
                 </Link>
               </Grid>
             </Grid>

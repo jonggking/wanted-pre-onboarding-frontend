@@ -10,7 +10,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { validateEmail, validatePassword } from "../components/validate";
 import * as Api from "../api/Api";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +22,14 @@ export default function SignUp() {
   const navigate = useNavigate();
   const isValidEmail = validateEmail(signUpData.email);
   const isValidPassword = validatePassword(signUpData.password);
+  const isSignIn = localStorage.getItem("access_token") !== null;
+
+  useEffect(() => {
+    if (isSignIn) {
+      navigate("/todo");
+    }
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -29,7 +37,7 @@ export default function SignUp() {
       const res = await Api.post("auth/signup", signUpData);
       if (res.status === 201) {
         alert("회원가입에 성공하셨습니다.");
-        navigate("/singin");
+        navigate("/signin");
       }
     } catch (err) {
       alert("회원가입도중 오류가 발생했습니다. 다시 시도해주세요.");
