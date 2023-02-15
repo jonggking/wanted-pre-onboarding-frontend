@@ -1,5 +1,3 @@
-/* @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap"); */
-
 * {
   box-sizing: border-box;
 }
@@ -19,27 +17,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(
-      62deg,
-      rgba(1, 95, 183, 0.9732216701223994) 13%,
-      rgba(255, 122, 151, 0.5) 4%
-    ),
-    linear-gradient(
-      44deg,
-      rgba(0, 43, 99, 0.07922090238615942) 39%,
-      rgba(242, 140, 143, 0.5) 18%
-    ),
-    linear-gradient(
-      118deg,
-      rgba(84, 202, 242, 0.03152997265339608) 40%,
-      rgba(247, 155, 187, 0.5) 54%
-    ),
-    linear-gradient(
-      58deg,
-      rgba(90, 90, 237, 0.16144443572260592) 83%,
-      rgba(249, 156, 142, 0.5) 23%
-    );
-  background-blend-mode: normal, lighten, multiply, hard-light;
+  background-color: #bface2;
   font-family: "DM Sans", sans-serif;
   overflow: hidden;
 }
@@ -77,10 +55,7 @@ ul {
   border: none;
   background: var(--add-button);
   color: #fff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-plus'%3E%3Cline x1='12' y1='5' x2='12' y2='19'/%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E");
   background-size: 18px;
-  background-position: center;
-  background-repeat: no-repeat;
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 0 12px 0 var(--add-button-shadow);
@@ -104,10 +79,6 @@ ul {
   color: #fff;
   box-shadow: none;
   border-radius: 0;
-
-  /* &:placeholder {
-    color: #fff;
-  } */
 }
 
 .task-list-item {
@@ -119,12 +90,11 @@ ul {
   padding: 8px;
 }
 
-.task-list-item input {
+.task-checkbox {
   width: 16px;
   height: 16px;
   border-radius: 50%;
   border: 1px solid #fff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check' stroke='%23fff'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 0;
@@ -135,7 +105,7 @@ ul {
   appearance: none;
 }
 
-.task-list-item input:hover {
+.task-checkbox:hover {
   border-color: var(--checkbox-color);
   box-shadow: 0 0 0 3px var(--checkbox-shadow);
 }
@@ -145,12 +115,31 @@ ul {
   border: 1px solid var(--checkbox-color);
   background-color: var(--checkbox-color);
 }
-.task-list-item input:checked span {
+
+.task-list-item input:checked +span {
   color: rgba(255, 255, 255, 0.5);
   text-decoration: line-through rgba(255, 255, 255, 0.8);
 }
 
-.task-list-item -label {
+.task-edit-input {
+  border-right: none;
+  width: 13rem;
+  padding: 0 4px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  background-color: transparent;
+  margin-right: 15px;
+  color: #fff;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.taskbox {
+  width: 12rem;
+}
+
+.task-list-item-label {
   display: flex;
   align-items: flex-start;
   color: #fff;
@@ -162,16 +151,42 @@ ul {
   cursor: pointer;
 }
 
-.delete-btn {
-  margin-left: auto;
-  display: block;
-  width: 16px;
-  height: 16px;
-  background-repeat: no-repeat;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ff3d46' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-trash-2'%3E%3Cpolyline points='3 6 5 6 21 6'/%3E%3Cpath d='M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'/%3E%3Cline x1='10' y1='11' x2='10' y2='17'/%3E%3Cline x1='14' y1='11' x2='14' y2='17'/%3E%3C/svg%3E");
-  background-size: 16px;
-  background-position: center;
+.editmode-btn-cancel {
+  width: 3rem;
   cursor: pointer;
+  border: 1px solid white;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.editmode-btn-confirm,
+.edit-btn {
+  width: 3rem;
+  margin-left: 5px;
+  cursor: pointer;
+  border: 1px solid #a099fb;
+  border-radius: 10px;
+  background-color: #a099fb;
+  transition: all 0.3s ease;
+}
+
+.editmode-btn-confirm:hover,
+.edit-btn:hover {
+  background-color: #6c5cea;
+}
+
+.delete-btn:hover {
+  background-color: #f32c52;
+}
+
+.delete-btn {
+  margin-left: 5px;
+  display: block;
+  width: 3rem;
+  cursor: pointer;
+  border: 1px solid #ff6c88;
+  border-radius: 10px;
+  background-color: #ff6c88;
 }
 
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
