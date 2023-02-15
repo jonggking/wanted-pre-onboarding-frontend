@@ -3,6 +3,8 @@
 $ yarn
 $ yarn start
 ```
+## 배포링크
+https://wanted-pre-onboarding-frontend-six-puce.vercel.app/todo
 
 ## 과제
 
