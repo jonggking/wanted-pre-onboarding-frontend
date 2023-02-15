@@ -11,7 +11,7 @@ async function get(endpoint: string, params?: string) {
     {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
     }
   );
@@ -26,7 +26,7 @@ async function post(endpoint: string, data: any, isFile?: boolean) {
   return axios.post(serverUrl + endpoint, bodyData, {
     headers: {
       "Content-Type": !isFile ? "application/json" : "multipart/form-data",
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
     },
   });
 }
@@ -39,7 +39,7 @@ async function put(endpoint: string, data: any, isFile?: boolean) {
   return axios.put(serverUrl + endpoint, bodyData, {
     headers: {
       "Content-Type": !isFile ? "application/json" : "multipart/form-data",
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
     },
   });
 }
@@ -52,24 +52,10 @@ async function del(endpoint: string, params?: string) {
     params ? serverUrl + endpoint + "/" + params : serverUrl + endpoint,
     {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
     }
   );
 }
 
 export { get, post, put, del as delete };
-
-axios.interceptors.response.use(
-  (res) => {
-    return res;
-  },
-  async (error: AxiosError) => {
-    if (error.response?.status === 403) {
-      alert("토큰이 유효하지 않습니다. 재로그인해주세요.");
-      localStorage.clear();
-      window.location.href = "/login";
-    }
-    return Promise.reject(error);
-  }
-);
