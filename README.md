@@ -72,10 +72,10 @@ $ npm start
 
 #### Assignment 5
 
-- `/todo`경로에 접속하면 투두 리스트의 목록을 볼 수 있도록 해주세요
+- [✅]`/todo`경로에 접속하면 투두 리스트의 목록을 볼 수 있도록 해주세요
 - 목록에서는 TODO의 내용과 완료 여부가 표시되어야 합니다.
-- TODO의 완료 여부는 `<input type="checkbox" />`를 통해 표현해주세요
-- TODO는 `<li>` tag를 이용해 감싸주세요
+- [✅]TODO의 완료 여부는 `<input type="checkbox" />`를 통해 표현해주세요
+- [✅]TODO는 `<li>` tag를 이용해 감싸주세요
 
 ```html
 <li>
@@ -94,17 +94,17 @@ $ npm start
 
 #### Assignment 6
 
-- 리스트 페이지에 새로운 TODO를 입력할 수 있는 input과 추가 button을 만들어주세요
+- [✅]리스트 페이지에 새로운 TODO를 입력할 수 있는 input과 추가 button을 만들어주세요
 
-  - TODO 입력 input에는 `data-testid="new-todo-input"` 속성을 부여해주세요
-  - TODO 추가 button에는 `data-testid="new-todo-add-button"` 속성을 부여해주세요
+  - [✅]TODO 입력 input에는 `data-testid="new-todo-input"` 속성을 부여해주세요
+  - [✅]TODO 추가 button에는 `data-testid="new-todo-add-button"` 속성을 부여해주세요
 
     ```html
     <input data-testid="new-todo-input" />
     <button data-testid="new-todo-add-button">추가</button>
     ```
 
-- 추가 button을 클릭하면 입력 input의 내용이 새로운 TODO로 추가되도록 해주세요
+- [✅]추가 button을 클릭하면 입력 input의 내용이 새로운 TODO로 추가되도록 해주세요
 
 #### Assignment 7
 
@@ -114,8 +114,8 @@ $ npm start
 
 - TODO 우측에 수정버튼과 삭제 버튼을 만들어주세요
 
-  - 수정 버튼에는 `data-testid="modify-button"` 속성을 부여해주세요
-  - 삭제 버튼에는 `data-testid="delete-button"` 속성을 부여해주세요
+  - [✅]수정 버튼에는 `data-testid="modify-button"` 속성을 부여해주세요
+  - [✅]삭제 버튼에는 `data-testid="delete-button"` 속성을 부여해주세요
 
     ```html
     <li>
@@ -132,7 +132,7 @@ $ npm start
 
 - 투두 리스트의 삭제 기능을 구현해주세요
 
-  - 투두 리스트의 TODO 우측의 삭제버튼을 누르면 해당 아이템이 삭제되도록 해주세요
+  - [✅]투두 리스트의 TODO 우측의 삭제버튼을 누르면 해당 아이템이 삭제되도록 해주세요
 
 #### Assignment 10
 
